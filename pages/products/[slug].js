@@ -1,15 +1,15 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
-import { imageToUrl, API_URL } from '../../utils/urls'
-import { twoDecimals } from '../../utils/format'
+import styles from '../../styles/Product.module.css'
+import { imageToUrl, twoDecimals, API_URL } from '../../lib/utils'
 import { useStateContext } from '../../context/StateContext'
 
 const Product = ({ product }) => {
   const { qty, onAdd } = useStateContext()
 
   return (
-    <div>
+    <div className={styles.container}>
       <Head>
         {product.attributes.meta_title &&
           <title>{product.attributes.meta_title}</title>
@@ -19,18 +19,26 @@ const Product = ({ product }) => {
         }
       </Head>
 
-      <h3>{product.attributes.name}</h3>
       <Image
         width={product.attributes.image.data.attributes.width}
         height={product.attributes.image.data.attributes.height}
         src={imageToUrl(product.attributes.image.data.attributes.url)}
         alt={product.attributes.image.data.attributes.alternativeText}
+        className={styles.image}
       />
-      <p>{twoDecimals(product.attributes.price)}</p>
-      <p>
-        {product.attributes.content}
-      </p>
-      <button type='button' onClick={() => onAdd(product, qty)}>Add to Cart</button>
+      
+      <div className={styles.info}>
+        <div className={styles.header}>
+          <h3>{product.attributes.name}</h3>
+          <p>${twoDecimals(product.attributes.price)}</p>
+        </div>
+        
+        <p>
+          {product.attributes.content}
+        </p>
+        
+        <button className={styles.button} type='button' onClick={() => onAdd(product, qty)}>Add to Cart</button>
+      </div>
     </div>
   )
 }

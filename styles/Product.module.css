@@ -1,0 +1,44 @@
+.container {
+  padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.image {
+  border-radius: 16px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 400px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header > h3 {
+  font-size: 1.5em;
+}
+
+.header > p {
+  font-size: 1.25em;
+  font-weight: 400;
+}
+
+.button {
+  width: 100%;
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 32px;
+  font-size: 1.25rem;
+  border-radius: 32px;
+  font-weight: 500;
+}

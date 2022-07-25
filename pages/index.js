@@ -1,14 +1,17 @@
-import { API_URL } from '../utils/urls'
+import styles from '../styles/Home.module.css'
+import { API_URL } from '../lib/utils'
 import { ProductCard } from '../components'
 
 export default function Home({ products }) {
   return (
-    <div>
-      <h1>Products</h1>
+    <div className={styles.container}>
+      <h1 className={styles.headerText}>Products</h1>
 
-      {products.data.map(product => (
-        <ProductCard key={product.attributes.name} product={product} />
-      ))}
+      <section className={styles.productGrid}>
+        {products.data.map(product => (
+          <ProductCard key={product.attributes.name} product={product} />
+        ))}
+      </section>
     </div>
   )
 }

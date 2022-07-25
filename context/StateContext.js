@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useState } from 'react'
 
 const Context = createContext()
 
@@ -18,13 +18,13 @@ export const StateContext = ({ children }) => {
     setTotalPrice(prevTotalPrice => prevTotalPrice + product.attributes.price * quantity)
     setTotalQuantities(prevTotalQuantities => prevTotalQuantities + quantity)
 
-    if(checkProductInCart) {
+    if (checkProductInCart) {
       const updatedCartItems = cartItems.map(cartProduct => {
-        if(cartProduct.id === product.id) return {
-          ...cartProduct,
-          quantity: cartProduct.quantity + quantity
-        }
-      })
+        if (cartProduct.id === product.id) {
+          return { ...cartProduct, quantity: cartProduct.quantity + quantity }
+      } else {
+        return cartProduct
+      }})
 
       setCartItems(updatedCartItems)
     } else {

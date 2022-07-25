@@ -1,0 +1,16 @@
+.container {
+  padding: 0 24px;
+  margin: 0 auto;
+}
+
+.headerText {
+  margin: 0 0 32px 0;
+}
+
+.productGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 48px;
+}
